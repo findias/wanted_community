@@ -18,7 +18,7 @@ config = {
     "SECRET_KEY": os.getenv('SECRET_KEY', '.env'),
     "UPLOAD_FOLDER": join(dirname(realpath(__file__)), 'uploads/'),
     "ALLOWED_EXTENSIONS": {'png', 'jpg', 'jpeg'},
-    "MAX_CONTENT_LENGTH": 1024 * 1024
+    "MAX_CONTENT_LENGTH": 6 * 1024 * 1024
 }
 
 application = Flask(__name__)
