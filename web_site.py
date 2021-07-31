@@ -10,6 +10,7 @@ from os.path import join, dirname, realpath
 __author__ = 'Konstantin Kovalev'
 
 # -*- coding: utf-8 -*-
+
 load_dotenv()
 
 config = {
