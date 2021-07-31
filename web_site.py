@@ -1,7 +1,8 @@
 import datetime
 import io
 import tempfile
-
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, flash, send_file, redirect, url_for
 import flyer
 from os.path import join, dirname, realpath
@@ -9,15 +10,15 @@ from os.path import join, dirname, realpath
 __author__ = 'Konstantin Kovalev'
 
 # -*- coding: utf-8 -*-
+load_dotenv()
 
 config = {
     "DEBUG": True,
-    "SECRET_KEY": 'kfhjs45daktjyfy56k7a8s8dhjfhkjasdh3',
+    "SECRET_KEY": os.getenv('SECRET_KEY', '.env'),
     "UPLOAD_FOLDER": join(dirname(realpath(__file__)), 'uploads/'),
     "ALLOWED_EXTENSIONS": {'png', 'jpg', 'jpeg'},
     "MAX_CONTENT_LENGTH": 1024 * 1024
 }
-
 
 application = Flask(__name__)
 application.config.from_mapping(config)
