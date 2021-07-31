@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<p> Генератор ориентировок
+    <form action="{{url_for('orks')}}" method="post" class="form-ork" enctype="multipart/form-data">
+    <p><label>Заголовок: </label>
+        <select name="find_man" autofocus required>
+        <option>Выберите из списка</option>
+        <option>Помогите найти человека</option>
+        <option>Помогите найти подростка</option>
+        <option>Помогите найти ребёнка</option>
+    </select>
+    <p><label>ФИО: </label>
+    <input type="text" name="op_name" value="" required/>
+    <p><label>Год рождения: </label>
+    <input type="text" name="year_old" value="" required/>
+    <p><label>Населенный пункт исчезновения: </label> <input type="text" name="op_location" value="" required/>
+    <p><label>Условия исчезновения: </label>
+    <p><textarea name="lost_conditional" rows="7" cols="40" required></textarea>
+    <p><label>Приметы: </label>
+    <p><textarea name="sign_txt" rows="7" cols="40" required></textarea>
+    <p><label>Был одет: </label>
+    <p><textarea name="was_dressed_txt" rows="7" cols="40"></textarea>
+    <p><label>При себе имел: </label>
+    <p><textarea name="have_with" rows="7" cols="40"></textarea>
+    <p><label>Особые приметы: </label>
+    <p><textarea name="special_sign" rows="7" cols="40"></textarea>
+    <p><label>Особое внимание!: </label>
+    <p><textarea name="attention" rows="7" cols="40"></textarea>
+    <p><label>Фото ОП (3х2, не более 1 Mb): </label>
+    <input type="file" name="op_photo" multiple accept="image/*">
+    <p><input type="submit" value="Создать ориентировку" >
+</form>
+    {% endblock %}
