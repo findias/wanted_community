@@ -29,7 +29,7 @@ def allowed_file(filename):
 
 @application.route("/", methods=["GET"])
 def index():
-    return render_template("ork.html", title="ДПСЦ «РЫСЬ»")
+    return render_template("ork.html")
 
 
 @application.route("/ork", methods=["POST"])
@@ -38,6 +38,7 @@ def orks():
         find_man=request.form['find_man'].upper(),
         op_name=request.form['op_name'],
         year_old=request.form['year_old'],
+        your_telephone=request.form['your_telephone'],
         op_location=request.form['op_location'],
         lost_conditional=request.form['lost_conditional'],
         sign=request.form['sign_txt'],
@@ -50,7 +51,6 @@ def orks():
 
     if op_data['op_photo'].filename == '':
         flash('Фото не выбрано')
-        # print('ork.html')
         return redirect('/')
 
     if not (op_data['op_photo'] and allowed_file(op_data['op_photo'].filename)):
@@ -64,12 +64,12 @@ def orks():
 
         flyer.background_generator = flyer.BackgroundGenerator(flyer.lynx_bg_size, 'white')
 
-        flyer.lynx_ork = flyer.BackgroundLynx(flyer.lynx_size_border, 'blue', flyer.ork_font_arial,
+        flyer.lynx_ork = flyer.BackgroundLynx(flyer.lynx_size_border, flyer.com_color_border, flyer.ork_font_arial,
                                               flyer.font_arial_bold, flyer.lynx_font_black, flyer.lynx_text_border_top,
                                               flyer.lynx_text_border_foot, flyer.lynx_op_photo_size,
                                               photo, flyer.source_dir_op_lynx,
                                               flyer.lynx_margin_border, flyer.lynx_color_text_border,
-                                              flyer.lynx_tel_number, flyer.lynx_text_inform)
+                                              op_data['your_telephone'], flyer.lynx_text_inform)
         flyer.lynx_ork.border_lynx_ork()
         flyer.lynx_ork.text_border_top_ork()
         flyer.lynx_ork.text_border_foot_ork()

@@ -10,7 +10,7 @@ __author__ = 'Konstantin Kovalev'
 start_time = time.time()
 
 lynx_bg_size = (1280, 905)
-lynx_size_border = 40
+lynx_size_border = 50
 fnt_size_border = lynx_size_border - 10
 lynx_op_photo_size = (417, 555)
 lynx_margin_border = 20
@@ -25,12 +25,13 @@ size_year_loc_fnt_lynx = 34
 lynx_conditional_font_size = 29
 lynx_width_line_conditional_text = 48
 
-lynx_text_border_top = 'дпсц «РЫСЬ»'.upper()  # text for header on border
-lynx_text_border_foot = 'https://vk.com/psg.nn52'  # text for footer on border
+lynx_text_border_top = 'Внимание!'.upper()  # text for header on border
+lynx_text_border_foot = 'Внимание!'.upper()  # text for footer on border
 lynx_color_text_border = 'white'
+com_color_border = '#A67200'
 lynx_tel_number = '8(831)28-38-200 или 102'  # telephone number for footer
 lynx_text_inform = 'Всех кто обладает информацией ' \
-                   'просим сообщить по телефонам:'  # text for footer under telephone number
+                   'просим сообщить по телефону:'  # text for footer under telephone number
 
 
 find_man = 'Помогите найти ребенка'.upper()
@@ -221,7 +222,7 @@ class LeafletLynx:
         self.size_inside_border_and_margin_w = (background_generator.bg_size[0] - (lynx_ork.size_border * 2) -
                                                 (lynx_ork.margin_border * 2))
         self.size_op_name_h = (background_generator.bg_size[1] - lynx_ork.op_photo_size[1]) - \
-                              ((lynx_ork.size_border * 8) - self._help_text_text_size()[1])
+                              ((lynx_ork.size_border * 7) - self._help_text_text_size()[1])
         self.coords_help_text = ((self._help_text_center_search()), (lynx_ork.size_border + lynx_ork.margin_border))
         self.coords_name_surname_text = ((self._name_surname_text_center_search()),
                                          (lynx_ork.size_border + lynx_ork.margin_border * 2 +
@@ -432,7 +433,7 @@ if __name__ == '__main__':
 
     background_generator = BackgroundGenerator(lynx_bg_size, 'white')
 
-    lynx_ork = BackgroundLynx(lynx_size_border, 'blue', ork_font_arial, font_arial_bold, lynx_font_black,
+    lynx_ork = BackgroundLynx(lynx_size_border, com_color_border, ork_font_arial, font_arial_bold, lynx_font_black,
                               lynx_text_border_top, lynx_text_border_foot, lynx_op_photo_size, op_images_lynx,
                               source_dir_op_lynx, lynx_margin_border, lynx_color_text_border, lynx_tel_number,
                               lynx_text_inform)
